@@ -1,0 +1,36 @@
+<h2>アカウント作成</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <p>ニックネーム</p>
+    <%= f.text_field :nickname, autofocus: true %>
+  </div>
+
+    <div class="field">
+    <p>メールアドレス</p>
+    <%= f.text_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :パスワード %>
+    <% if @minimum_password_length %>
+   
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off", placeholder: "6文字以上" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :パスワード（確認用） %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "6文字以上" %>
+  </div>
+
+  <div class="actions">
+    <br>
+    <%= f.submit "アカウント作成する" %>
+    <br>
+  </div>
+<% end %>
+
+<%= render "users/shared/links" %>

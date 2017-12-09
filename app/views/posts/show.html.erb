@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>タイトル:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>内容:</strong>
+  <%= @post.body %>
+</p>
+
+<% if current_user.id == @post.user.id %>
+ <%= link_to '編集', edit_post_path(@post), class:"text_decoration" %>
+ <%= link_to '削除', @post, method: :delete, data:{ confirm: 'Are you sure?'}, class:"text_decoration" %>
+
+ <% end %>
+ <br>
+ <br>
+ <%= link_to '投稿一覧へ戻る', posts_path, class:"text_decoration" %>

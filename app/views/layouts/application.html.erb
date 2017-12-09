@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sns</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+  <% if user_signed_in? %>
+  	 <%= current_user.nickname %>さんとしてログインしてます。
+     <br>
+    e-mail：<%= current_user.email %>です。
+    <br>
+  	<%= current_user.nickname %>さんではない場合、<%= link_to "ログアウト",destroy_user_session_path, method: :delete, class:"text_decoration"%>願います。
+  	<% else %>
+  	<%= link_to "新規登録",new_user_registration_path, class:"text_decoration" %>
+    <br>
+
+  	<%= link_to "ログイン",new_user_session_path, class:"text_decoration" %>
+  	<% end %>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>生活の知恵</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ニックネーム</th>
+      <th>画像</th>
+      <th>タイトル</th>
+      <th>内容</th>
+      <th colspan="3"></th>
+      <th>タグ</th>
+    </tr>
+  </thead>
+
+<h2><%= link_to '新規投稿', new_post_path, class:"text_right"%></h2>
+<br>
+<br>
+  <tbody>
+
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.user.nickname %></td>
+        <% if post.image? %>
+          <td><%= image_tag post.image.url %></td>
+        <% else %>
+        <td>画像がありません</td>
+        <% end %>
+        <td><%= link_to post.title, post_path(post), class:"text_decoration" %></td>
+        <td><%= post.body %></td>
+        <td><%= render 'posts/tag_list', tag_list: post.interest_list %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>

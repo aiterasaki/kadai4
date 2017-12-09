@@ -1,0 +1,38 @@
+<%= form_with(model: post, local: true) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :タイトル %>
+    <%= form.text_field :title, id: :post_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :内容 %>
+    <%= form.text_area :body, id: :post_body, class:"body_box" %>
+  </div>
+
+  <div class="field">
+      <%= form.label :イメージ画像 %>
+      <%= form.file_field :image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :interest_list, "興味・関心（カンマ区切り）" %><br>
+    <%= text_field_tag 'post[interest_list]', @post.interest_list.join(',') %>
+  </div>
+<br>
+  <div class="actions">
+    <%= form.submit "投稿する"%>
+  </div>
+<br>
+<% end %>

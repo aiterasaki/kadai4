@@ -1,0 +1,14 @@
+<h1>Hello, world</h1>
+<div class="users">
+  <p>ただいま、 <%= current_user.email %> としてログインしています。</p> 
+  <% @users.each do |user| %>
+    <div class="user">
+      ID: <%= user.id %>
+      <br> app/views/root/index.html.erb
+      ニックネーム: <%= user.nickname %>
+      <br>
+      Email: <%= user.email %>
+    </div>
+  <% end %>
+</div>
+<%= link_to 'ログアウトする', destroy_user_session_path, method: :delete, data: { confirm: 'よろしいですか？' } %>
